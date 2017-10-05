@@ -1,3 +1,4 @@
+/* global describe, it, browser */
 const expect = require('chai').expect;
 
 describe('MemoryGame App', () => {
