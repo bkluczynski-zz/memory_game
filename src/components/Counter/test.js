@@ -2,11 +2,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Counter from '.';
-import faker from 'faker';
-import { generateDeck } from '../../util/testData'
 
 
-describe('Card display', () => {
+describe('Counter display', () => {
   let wrapper;
   const counter = 0
 

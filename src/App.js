@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Card from './components/Card/index'
 import Stars from './components/Stars/index'
-
 import { shuffle } from './util/helpers'
 import './App.css'
+import { handleClass } from './util/helpers'
 
 class App extends Component {
 
@@ -116,7 +116,6 @@ class App extends Component {
 
 
   toggleClass = (id) => {
-
     this.setState(state => ({
       deck : this.state.deck.map(item => {
         if (item.id === id){
@@ -141,7 +140,6 @@ class App extends Component {
           activeCards.push(card)
         }
     })
-    console.log("activeCards", activeCards)
     return this.twoSameCards(activeCards);
   }
 
@@ -184,26 +182,12 @@ class App extends Component {
   }
 
   count = () => {
-    console.log(this.state.counter)
     this.setState(state => ({
       counter: state.counter += 1
     }))
   }
 
-  handleClass = (active, match) => {
-    if (match){
-      return 'card match animated flip'
-    } else if (active) {
-      return 'card open show animated rubberBand'
-    } else if (match === false) {
-      return 'card animated wobble'
-    } else {
-      return 'card'
-    }
-  }
-
   render(){
-    console.log("deck is:", this.state.deck)
     return (
 
       <div className="container">
@@ -211,12 +195,10 @@ class App extends Component {
               <h1>Matching Game</h1>
           </header>
           <Stars counter={this.state.counter} deck={this.state.deck} />
-          <Card cards={this.state.deck} open={this.toggleClass} handleClass={this.handleClass}/>
+          <Card cards={this.state.deck} open={this.toggleClass} handleClass={handleClass}/>
       </div>
-
     )
   }
-
 }
 
 
