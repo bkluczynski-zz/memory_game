@@ -36,10 +36,20 @@ describe('Card display', () => {
   it('should initialize the deck state to an array of 16', () => {
     expect(wrapper.props().children.length).toEqual(16)
   })
-  it('fires the right method upon clicking the card', () => {
+  it('fires the open method upon clicking the card', () => {
     wrapper.find('li').first().simulate('click');
     expect(open.mock.calls.length).toEqual(1);
   })
+  it('fires the handleClass method upon mounting the component', () => {
+    expect(classHandling.mock.calls.length).toEqual(16);
+  })
+
+
+
+
+
+
+
 
 
 
