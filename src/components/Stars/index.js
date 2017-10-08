@@ -1,26 +1,21 @@
 import React from 'react';
 import Counter from '../Counter/index'
-import GameOver from '../GameOver/index'
+import BouncingStars from '../BouncingStars/index'
+import ResetButton from '../ResetButton/index'
 import { trackProgress } from '../../util/helpers'
 import PropTypes from 'prop-types';
 
 
 
-const Stars = ({counter, deck}) => (
+const Stars = ({counter, deck, reset}) => (
 
     <section className="score-panel">
-        <ul className="stars">
-          {trackProgress(counter)}
-        </ul>
-        <GameOver deck={deck} counter={counter}/>
+        <BouncingStars counter={counter}/>
         <Counter counter={counter}/>
-        <div className="restart">
-            <i className="fa fa-repeat"></i>
-        </div>
+        <ResetButton reset={reset}/>
     </section>
 
 )
-
 Stars.propTypes = {
   deck: PropTypes.array.isRequired,
   counter: PropTypes.number.isRequired,

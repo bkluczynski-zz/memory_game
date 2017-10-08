@@ -53,6 +53,7 @@ h1 {
 }
 .content {
     position: absolute;
+    text-align: center;
     top: 40px;
     left: 40px;
     right: 40px;

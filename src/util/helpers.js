@@ -30,9 +30,9 @@ export const trackProgress = (counter) => {
         case 10:
         return (
           <div>
-            <li><i className="fa fa-star"></i></li>
-            <li><i className="fa fa-star"></i></li>
-            <li><i className="fa fa-star"></i></li>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
           </div>)
         break;
         case 11:
@@ -47,8 +47,8 @@ export const trackProgress = (counter) => {
         case 20:
         return (
           <div>
-            <li><i className="fa fa-star"></i></li>
-            <li><i className="fa fa-star"></i></li>
+            <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
           </div>
             )
               break;
@@ -64,11 +64,12 @@ export const trackProgress = (counter) => {
               case 30:
               return (
                 <div>
-                  <li><i className="fa fa-star"></i > </li>
+                  <i className="fa fa-star"></i>
                 </div>
               )
                 break;
-          default: return <div><li><i className="fa fa-star"></i > </li></div>
+          default: return <div><i className="fa fa-star"></i>
+</div>
 
     }
 }
@@ -83,4 +84,107 @@ export const handleClass = (active, match) => {
   } else {
     return 'card'
   }
+}
+
+export const initialState = {
+
+  deck: [
+      {
+          id: 1,
+          name: 'fa-diamond',
+          active: false,
+          match: null
+      }, {
+          id: 2,
+          name: 'fa-diamond',
+          active: false,
+          match: null
+
+      }, {
+          id: 3,
+          name: 'fa-paper-plane-o',
+          active: false,
+          match: null
+
+      }, {
+          id: 4,
+          name: 'fa-paper-plane-o',
+          active: false,
+          match: null
+
+      }, {
+          id: 5,
+          name: 'fa-anchor',
+          active: false,
+          match: null
+
+      }, {
+          id: 6,
+          name: 'fa-anchor',
+          active: false,
+          match: null
+
+      }, {
+          id: 7,
+          name: 'fa-bolt',
+          active: false,
+          match: null
+
+      }, {
+          id: 8,
+          name: 'fa-bolt',
+          active: false,
+          match: null
+
+      }, {
+          id: 9,
+          name: 'fa-cube',
+          active: false,
+          match: null
+
+      }, {
+          id: 10,
+          name: 'fa-cube',
+          active: false,
+          match: null
+
+      }, {
+          id: 11,
+          name: 'fa-bicycle',
+          active: false,
+          match: null
+
+      }, {
+          id: 12,
+          name: 'fa-bicycle',
+          active: false,
+          match: null
+
+      }, {
+          id: 13,
+          name: 'fa-leaf',
+          active: false,
+          match: null
+
+      }, {
+          id: 14,
+          name: 'fa-leaf',
+          active: false,
+          match: null
+
+      }, {
+          id: 15,
+          name: 'fa-bomb',
+          active: false,
+          match: null
+
+      }, {
+          id: 16,
+          name: 'fa-bomb',
+          active: false,
+          match: null
+      }
+  ],
+  counter: 0,
+  modal: true,
 }

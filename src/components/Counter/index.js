@@ -8,7 +8,7 @@ const Counter = ({counter}) => (
 )
 
 Counter.propTypes = {
-  counter: PropTypes.number.isRequired
+  counter: PropTypes.number.isRequired,
 }
 
 export default Counter;
