@@ -5,15 +5,24 @@ import ResetButton from '../ResetButton/index'
 import { trackProgress } from '../../util/helpers'
 import PropTypes from 'prop-types';
 
+const formattedSeconds = (sec) => {
+  return Math.floor(sec / 60) +
+    ':' +
+  ('0' + sec % 60).slice(-2)
+}
 
+const Stars = ({counter, deck, reset, start, time}) => (
 
-const Stars = ({counter, deck, reset}) => (
-
+  <div className="score-float">
     <section className="score-panel">
         <BouncingStars counter={counter}/>
         <Counter counter={counter}/>
+        <div>Time: {formattedSeconds(time)}</div>
+        <button onClick={() => {start()}}>Start</button>
         <ResetButton reset={reset}/>
     </section>
+  </div>
+
 
 )
 Stars.propTypes = {

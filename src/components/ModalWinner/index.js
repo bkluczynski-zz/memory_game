@@ -2,8 +2,9 @@ import React from 'react'
 import Modal from 'react-modal'
 import { trackProgress } from '../../util/helpers'
 import BouncingStars from '../BouncingStars/index'
+import Timer from '../Timer/index'
 
-const ModalWinner = ({deck, modal, closeModal, counter}) => {
+const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
 
   const winner = (deck) => {
     let counter = 0;
@@ -12,10 +13,9 @@ const ModalWinner = ({deck, modal, closeModal, counter}) => {
         counter++
       }
     })
-    console.log(counter)
+    counter === 16 ? stopWatch() : null
     return counter === 16
   }
-
 
   return (
     <div>
@@ -27,9 +27,9 @@ const ModalWinner = ({deck, modal, closeModal, counter}) => {
       contentLabel='Modal'
       onRequestClose={closeModal}
       >
-        <h1>Well done! You've won making ONLY {counter} steps!</h1>
-          <BouncingStars counter={counter} />
-          <h2>Whould you like to play another game? </h2>
+        <h1>Well done! You've won making {counter} steps and it took you {time} s to finish the same!</h1>
+          <p>Rating :<BouncingStars counter={counter} /></p>
+          <h2>Would you like to play another game? </h2>
             <button onClick={closeModal}>PLAY</button>
       </Modal>
       }

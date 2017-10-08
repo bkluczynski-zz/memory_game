@@ -97,15 +97,24 @@ h1 {
  * Styles for the Score Panel
  */
 
+
+ .score-float {
+   display: flex;
+   justify-content: center;
+ }
+
 .score-panel {
+    display: flex;
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+    justify-content: space-around;
 }
 .score-panel .stars {
     margin: 0;
     padding: 0;
-    display: inline-block;
+    display: flex;
+    justify-content: space-around;
     margin: 0 5px 0 0;
 }
 .score-panel .stars li {
@@ -113,6 +122,5 @@ h1 {
     display: inline-block;
 }
 .score-panel .restart {
-    float: right;
     cursor: pointer;
 }
