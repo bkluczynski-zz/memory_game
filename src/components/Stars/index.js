@@ -18,7 +18,6 @@ const Stars = ({counter, deck, reset, start, time}) => (
         <BouncingStars counter={counter}/>
         <Counter counter={counter}/>
         <div>Time: {formattedSeconds(time)}</div>
-        <button onClick={() => {start()}}>Start</button>
         <ResetButton reset={reset}/>
     </section>
   </div>

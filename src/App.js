@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Card from './components/Card/index'
 import Stars from './components/Stars/index'
-import Timer from './components/Timer/index'
 import ModalWinner from './components/ModalWinner/index'
 import {shuffle} from './util/helpers'
 import './App.css'
@@ -21,6 +20,7 @@ class App extends Component {
         this.hackToCleanState()
         this.shuffleDeck(this.state.deck)
         this.handleResetClick()
+        this.handleStartClick()
     }
 
     componentDidMount() {
