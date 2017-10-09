@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 
 const ResetButton = ({reset}) => (
 
@@ -6,5 +8,9 @@ const ResetButton = ({reset}) => (
         <i className="fa fa-repeat"></i>
     </div>
 )
+
+ResetButton.propTypes = {
+  reset: PropTypes.func.isRequired,
+}
 
 export default ResetButton;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { trackProgress } from '../../util/helpers'
+import PropTypes from 'prop-types';
 
 
 const BouncingStars = ({counter}) => (
@@ -7,5 +8,9 @@ const BouncingStars = ({counter}) => (
     {trackProgress(counter)}
   </ul>
 )
+
+BouncingStars.propTypes = {
+  counter : PropTypes.number.isRequired
+}
 
 export default BouncingStars;

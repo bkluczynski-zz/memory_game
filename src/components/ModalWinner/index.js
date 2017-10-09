@@ -2,6 +2,8 @@ import React from 'react'
 import Modal from 'react-modal'
 import { formattedSeconds } from '../../util/helpers'
 import BouncingStars from '../BouncingStars/index'
+import PropTypes from 'prop-types';
+
 
 const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
 
@@ -35,6 +37,15 @@ const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
     </div>
 
   )
+}
+
+ModalWinner.propTypes = {
+  deck: PropTypes.array.isRequired,
+  modal: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
+  stopWatch : PropTypes.func.isRequired,
+  time: PropTypes.number.isRequired,
 }
 
 export default ModalWinner
