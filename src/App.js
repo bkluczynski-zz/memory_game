@@ -4,15 +4,21 @@ import Stars from './components/Stars/index'
 import ModalWinner from './components/ModalWinner/index'
 import {shuffle} from './util/helpers'
 import './App.css'
-import {handleClass, initialState, isNotSimilar, setVisibility, takeOnlyTwoCards, setCardOpen  } from './util/helpers'
-
+import {
+    handleClass,
+    initialState,
+    isNotSimilar,
+    setVisibility,
+    takeOnlyTwoCards,
+    setCardOpen,
+    putCardsAside
+} from './util/helpers'
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = initialState;
         this.incrementer = null;
-
     }
 
     reset = () => {
@@ -51,18 +57,14 @@ class App extends Component {
 
     twoOpened = () => {
         let activeCards = [];
-        this.state.deck.map(card => {
-            if (card.active && !card.match) {
-                activeCards.push(card)
-            }
-        })
+        this.state.deck.map(card => putCardsAside(activeCards, card))
         return this.handlePairOfCards(activeCards);
     }
 
-
     handlePairOfCards = (twoCards) => {
         if (takeOnlyTwoCards(twoCards)) {
-            let [cardOne, cardTwo] = twoCards;
+            let [cardOne,
+                cardTwo] = twoCards;
             isNotSimilar(cardOne, cardTwo)
                 ? this.removeClass(cardOne, cardTwo)
                 : this.addClass(cardOne, cardTwo)
@@ -72,7 +74,7 @@ class App extends Component {
     removeClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
-                deck: state.deck.map(card => setVisibility(card,x,y, false))
+                deck: state.deck.map(card => setVisibility(card, x, y, false))
             }), this.count)
         }, 500)
     }
@@ -80,7 +82,7 @@ class App extends Component {
     addClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
-                deck: state.deck.map(card => setVisibility(card,x,y, true))
+                deck: state.deck.map(card => setVisibility(card, x, y, true))
             }), this.count)
         }, 500)
     }
@@ -97,22 +99,18 @@ class App extends Component {
     }
 
     handleStartClick = () => {
-      this.incrementer = setInterval( () =>
-        this.setState({
-          secondsElapsed: this.state.secondsElapsed + 1
-        })
-      , 1000);
+        this.incrementer = setInterval(() => this.setState({
+            secondsElapsed: this.state.secondsElapsed + 1
+        }), 1000);
     }
 
     handleStopClick = () => {
-      clearInterval(this.incrementer);
+        clearInterval(this.incrementer);
     }
 
     handleResetClick = () => {
-      clearInterval(this.incrementer);
-      this.setState({
-        secondsElapsed: 0,
-      })
+        clearInterval(this.incrementer);
+        this.setState({secondsElapsed: 0})
     }
 
     render() {

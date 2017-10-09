@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from 'react-modal'
-import { trackProgress } from '../../util/helpers'
 import { formattedSeconds } from '../../util/helpers'
 import BouncingStars from '../BouncingStars/index'
 
@@ -8,9 +7,9 @@ const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
 
   const winner = (deck) => {
     let counter = 0;
-    deck.map(card => {
+     deck.map(card => {
       if (card.match){
-        counter++
+         counter++
       }
     })
     counter === 16 ? stopWatch() : null

@@ -117,6 +117,12 @@ export const takeOnlyTwoCards = (cards) => {
   return (cards.length >= 2 && cards.length % 2 === 0)
 }
 
+export const putCardsAside = (activeCards, card) => {
+  if (card.active && !card.match){
+    activeCards.push(card)
+  }
+}
+
 export const initialState = {
 
   deck: [
