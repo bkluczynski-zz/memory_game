@@ -47,12 +47,13 @@ class App extends Component {
     }
 
     hackToCleanState = () => {
-        this.setState(state => {
-            deck : state.deck.map(card => {
+        this.setState(state => ({
+            deck : this.state.deck.map(card => {
                 card.active = false
                 card.match = null
+                return card
             })
-        })
+        }))
     }
 
     twoOpened = () => {

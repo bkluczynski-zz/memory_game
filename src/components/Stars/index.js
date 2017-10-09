@@ -16,11 +16,13 @@ const Stars = ({counter, deck, reset, start, time}) => (
     </section>
   </div>
 
-
 )
 Stars.propTypes = {
   deck: PropTypes.array.isRequired,
   counter: PropTypes.number.isRequired,
+  reset: PropTypes.func.isRequired,
+  start: PropTypes.func.isRequired,
+  time: PropTypes.number.isRequired,
 }
 
 export default Stars;
