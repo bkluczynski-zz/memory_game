@@ -2,14 +2,8 @@ import React from 'react';
 import Counter from '../Counter/index'
 import BouncingStars from '../BouncingStars/index'
 import ResetButton from '../ResetButton/index'
-import { trackProgress } from '../../util/helpers'
+import { formattedSeconds } from '../../util/helpers'
 import PropTypes from 'prop-types';
-
-const formattedSeconds = (sec) => {
-  return Math.floor(sec / 60) +
-    ':' +
-  ('0' + sec % 60).slice(-2)
-}
 
 const Stars = ({counter, deck, reset, start, time}) => (
 

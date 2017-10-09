@@ -86,6 +86,37 @@ export const handleClass = (active, match) => {
   }
 }
 
+export const isNotSimilar = (x, y) => {
+    return x.name !== y.name
+}
+
+export const formattedSeconds = (sec) => {
+  return Math.floor(sec / 60) +
+    ':' +
+  ('0' + sec % 60).slice(-2)
+}
+
+export const setVisibility = (card,x,y,boolean) => {
+ if ((card.id === x.id || card.id === y.id)){
+   card.active = boolean
+   card.match = boolean
+ }
+ return card
+}
+
+export const setCardOpen = (card, id) => {
+  if (card.id === id){
+    card.active = true
+    return card
+  } else {
+    return card
+  }
+}
+
+export const takeOnlyTwoCards = (cards) => {
+  return (cards.length >= 2 && cards.length % 2 === 0)
+}
+
 export const initialState = {
 
   deck: [

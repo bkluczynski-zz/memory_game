@@ -4,8 +4,8 @@ import Stars from './components/Stars/index'
 import ModalWinner from './components/ModalWinner/index'
 import {shuffle} from './util/helpers'
 import './App.css'
-import {handleClass} from './util/helpers'
-import {initialState} from './util/helpers'
+import {handleClass, initialState, isNotSimilar, setVisibility, takeOnlyTwoCards, setCardOpen  } from './util/helpers'
+
 
 class App extends Component {
     constructor(props) {
@@ -32,14 +32,7 @@ class App extends Component {
 
     toggleClass = (id) => {
         this.setState(state => ({
-            deck: this.state.deck.map(item => {
-                if (item.id === id) {
-                    item.active = true;
-                    return item
-                } else {
-                    return item
-                }
-            })
+            deck: this.state.deck.map(card => setCardOpen(card, id))
         }), this.twoOpened)
     }
 
@@ -63,14 +56,14 @@ class App extends Component {
                 activeCards.push(card)
             }
         })
-        return this.twoSameCards(activeCards);
+        return this.handlePairOfCards(activeCards);
     }
 
-    twoSameCards = (twoCards) => {
-        if (twoCards.length >= 2 && twoCards.length % 2 === 0) {
-            let [cardOne,
-                cardTwo] = twoCards;
-            this.isNotSimilar(cardOne, cardTwo)
+
+    handlePairOfCards = (twoCards) => {
+        if (takeOnlyTwoCards(twoCards)) {
+            let [cardOne, cardTwo] = twoCards;
+            isNotSimilar(cardOne, cardTwo)
                 ? this.removeClass(cardOne, cardTwo)
                 : this.addClass(cardOne, cardTwo)
         }
@@ -79,39 +72,22 @@ class App extends Component {
     removeClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
-                deck: state.deck.map(card => {
-                    if (card.id === x.id || card.id === y.id) {
-                        card.active = false
-                        card.match = false
-                    }
-                    return card
-                })
+                deck: state.deck.map(card => setVisibility(card,x,y, false))
             }), this.count)
         }, 500)
-    }
-
-    openModal = () => this.setState(() => ({modal: true}))
-    closeModal = () => {
-        this.setState({modal: false})
-        this.reset()
     }
 
     addClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
-                deck: state.deck.map(card => {
-                    if (card.id === x.id || card.id === y.id) {
-                        card.active = true
-                        card.match = true
-                    }
-                    return card
-                })
+                deck: state.deck.map(card => setVisibility(card,x,y, true))
             }), this.count)
         }, 500)
     }
 
-    isNotSimilar = (x, y) => {
-        return x.name !== y.name
+    closeModal = () => {
+        this.setState({modal: false})
+        this.reset()
     }
 
     count = () => {

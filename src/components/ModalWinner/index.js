@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { trackProgress } from '../../util/helpers'
+import { formattedSeconds } from '../../util/helpers'
 import BouncingStars from '../BouncingStars/index'
 
 const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
@@ -26,8 +27,8 @@ const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
       contentLabel='Modal'
       onRequestClose={closeModal}
       >
-        <h1>Well done! You've won making {counter} steps and it took you {time} s to finish the game!</h1>
-          <p>Rating :<BouncingStars counter={counter} /></p>
+        <h1>Well done! You've won making {counter} steps and it took you {formattedSeconds(time)} to finish the game!</h1>
+          <BouncingStars counter={counter} />
           <h2>Would you like to play another game? </h2>
             <button onClick={closeModal}>PLAY</button>
       </Modal>
