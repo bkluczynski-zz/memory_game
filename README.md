@@ -1,3 +1,11 @@
+## React implementation of a popular memory game
+
+To run app execute following commands in order: 
+- `npm install` to install all dependencies
+- `npm run test` to run the tests
+- `yarn start` to start the application
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
