@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 const ModalWinner = ({deck, modal, closeModal, counter, stopWatch, time}) => {
 
+  //if counter checking the match status hits 16, meaning all cards in the deck have been marked as matched, stop the watch
   const winner = (deck) => {
     let counter = 0;
      deck.map(card => {

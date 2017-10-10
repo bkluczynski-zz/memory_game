@@ -15,12 +15,13 @@ import {
 } from './util/helpers'
 
 class App extends Component {
+  //initializing the app state
     constructor(props) {
         super(props)
         this.state = initialState;
         this.incrementer = null;
     }
-
+    //reseting the entire state: timer, cards location, active and match statuses
     reset = () => {
         this.setState(initialState)
         this.hackToCleanState()
@@ -29,6 +30,8 @@ class App extends Component {
         this.handleStartClick()
     }
 
+    //immediately after mounting the component, state is being set to a shuffled deck
+    //starting the timer
     componentDidMount() {
         this.setState(state => ({
             deck: this.shuffleDeck(this.state.deck)
@@ -36,16 +39,20 @@ class App extends Component {
         this.handleStartClick()
     }
 
+    //changing the card's class by toggling it's active status
+    //if id of the card matches id available in a deck, set card's status to active
     toggleClass = (id) => {
         this.setState(state => ({
             deck: this.state.deck.map(card => setCardOpen(card, id))
         }), this.twoOpened)
     }
 
+    //shuffling the deck
     shuffleDeck = (deck) => {
         return shuffle(deck);
     }
 
+    //cleaning the state - assigning active and match status to false and null values
     hackToCleanState = () => {
         this.setState(state => ({
             deck : this.state.deck.map(card => {
@@ -55,13 +62,16 @@ class App extends Component {
             })
         }))
     }
-
+    //in case two cards have been marked as active, take those two active cards
+    //and if both cards match, set their match status and active status to true,
+    //otherwise, set them back to false.
     twoOpened = () => {
         let activeCards = [];
         this.state.deck.map(card => putCardsAside(activeCards, card))
         return this.handlePairOfCards(activeCards);
     }
 
+    //handling two active cards
     handlePairOfCards = (twoCards) => {
         if (takeOnlyTwoCards(twoCards)) {
             let [cardOne,
@@ -72,6 +82,7 @@ class App extends Component {
         }
     }
 
+    //setting the active and match status to false
     removeClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
@@ -80,6 +91,7 @@ class App extends Component {
         }, 500)
     }
 
+    //setting the active and match status to true
     addClass = (x, y) => {
         setTimeout(() => {
             this.setState(state => ({
@@ -88,27 +100,30 @@ class App extends Component {
         }, 500)
     }
 
+    //closing the modal
     closeModal = () => {
         this.setState({modal: false})
         this.reset()
     }
 
+    //counting the moves
     count = () => {
         this.setState(state => ({
             counter: state.counter += 1
         }))
     }
 
+    //starting the watchstop
     handleStartClick = () => {
         this.incrementer = setInterval(() => this.setState({
             secondsElapsed: this.state.secondsElapsed + 1
         }), 1000);
     }
-
+    //stoping the watchstop
     handleStopClick = () => {
         clearInterval(this.incrementer);
     }
-
+    //reseting the watchstop
     handleResetClick = () => {
         clearInterval(this.incrementer);
         this.setState({secondsElapsed: 0})
