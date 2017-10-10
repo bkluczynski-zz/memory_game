@@ -15,12 +15,14 @@ body {
     /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -123,4 +125,51 @@ h1 {
 }
 .score-panel .restart {
     cursor: pointer;
+}
+
+@media screen and (min-width: 400px) and (max-width: 450px){
+  .deck {
+    width: 100%;
+    min-height: 400px;
+    padding: 17px;
+  }
+  .deck .card {
+    height: 80px;
+    width: 80px;
+  }
+  .container {
+    padding: 10px;
+  }
+
+}
+
+@media screen and (min-width: 451px) and (max-width: 550px){
+  .deck {
+    width: 100%;
+    min-height: 500px;
+    padding: 15px;
+  }
+  .deck .card {
+    height: 100px;
+    width: 100px;
+  }
+  .container {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 551px) and (max-width: 610px){
+  .deck {
+    width: 100%;
+    min-height: 500px;
+    padding: 15px;
+  }
+  .deck .card {
+    height: 110px;
+    width: 110px;
+  }
+  .container {
+    padding: 15px;
+  }
+
 }
